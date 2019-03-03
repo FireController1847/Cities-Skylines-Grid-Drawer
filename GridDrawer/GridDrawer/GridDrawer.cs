@@ -18,5 +18,9 @@ namespace GridDrawer {
         public void OnDisabled() {
             Log.Info($"Grid Drawer disabled.");
         }
+
+        public void OnSettingsUI(UIHelperBase helper) {
+            Options.makeSettings(helper);
+        }
     }
 }

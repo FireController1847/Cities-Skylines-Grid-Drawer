@@ -54,9 +54,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\GlobalConfig.cs" />
     <Compile Include="GridDrawer.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Config\Options.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
