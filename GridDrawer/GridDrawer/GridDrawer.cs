@@ -9,7 +9,7 @@ namespace GridDrawer {
     public class GridDrawer : IUserMod {
         public string Name => "Grid Drawer";
 
-        public string Description => "Draws the VehicleManager Grid (m_vehicleGrid).";
+        public string Description => "Draws useful grids overlayed on top of the land.";
 
         public void OnEnabled() {
             Log.Info($"Grid Drawer enabled. Build {Assembly.GetExecutingAssembly().GetName().Version}");

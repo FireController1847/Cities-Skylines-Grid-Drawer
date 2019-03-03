@@ -15,17 +15,17 @@ namespace GridDrawer {
             UIHelper actualHelper = helper as UIHelper;
             UIComponent container = actualHelper.self as UIComponent;
 
-            enableGridToggle = actualHelper.AddCheckbox("Enable Grid", GlobalConfig.Instance.EnableGrid, onEnableGridChanged) as UICheckBox;
+            enableGridToggle = actualHelper.AddCheckbox("Enable Grid", GlobalConfig.Instance.EnableVehicleManagerGrid, onEnableGridChanged) as UICheckBox;
         }
 
         private static void onEnableGridChanged(bool newValue) {
             Log._Debug($"enableGrid changed to {newValue}");
-            GlobalConfig.Instance.EnableGrid = newValue;
+            GlobalConfig.Instance.EnableVehicleManagerGrid = newValue;
             GlobalConfig.WriteConfig();
         }
 
         public static void setEnableGrid(bool newValue) {
-            GlobalConfig.Instance.EnableGrid = newValue;
+            GlobalConfig.Instance.EnableVehicleManagerGrid = newValue;
             GlobalConfig.WriteConfig();
 
             if (enableGridToggle != null)

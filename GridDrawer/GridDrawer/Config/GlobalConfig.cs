@@ -24,9 +24,9 @@ namespace GridDrawer.Config {
         /// </summary>
         public int Version = LatestVersion;
         /// <summary>
-        /// Whether or not the grid is enabled
+        /// Whether or not the vehiclemanager grid is enabled
         /// </summary>
-        public bool EnableGrid = false;
+        public bool EnableVehicleManagerGrid = false;
 
         //// End XML ////
         
@@ -38,7 +38,7 @@ namespace GridDrawer.Config {
             Log._Debug($"Writing default config...");
             GlobalConfig conf = new GlobalConfig();
             if (!resetAll && oldConfig != null) {
-                conf.EnableGrid = oldConfig.EnableGrid;
+                conf.EnableVehicleManagerGrid = oldConfig.EnableVehicleManagerGrid;
             }
             timeLastModified = WriteConfig(conf);
             return conf;
