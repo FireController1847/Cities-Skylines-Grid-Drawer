@@ -7,32 +7,14 @@ using System.Text;
 using UnityEngine;
 
 namespace GridDrawer {
-    public class GridRenderManager : SimulationManagerBase<RenderManager, RenderProperties>, ISimulationManager, IRenderableManager {
-        private static float GRID_CELL_SIZE = 60f;
-        // private static Vector3 GridCenter;
-
-        /*
-        private static float gridGap = ZoneManager.ZONEGRID_CELL_SIZE / 8;
-        private static float gridSize = 1000f;
-        private static float gridAlpha = 0.2f;
-        */
+    public class GridRenderManager : SimulationManagerBase<VehicleManager, VehicleProperties>, ISimulationManager, IRenderableManager {
+        private static float GRID_CELL_SIZE = VehicleManager.VEHICLEGRID_CELL_SIZE;
+        private static int GRID_RESOLUTION = VehicleManager.VEHICLEGRID_RESOLUTION;
+        private static float GRID_COLOR_ALPHA = 0.2f;
 
         public static GridRenderManager Instance = new GridRenderManager();
         static GridRenderManager() {
 
-        }
-
-        /*
-        protected override void BeginOverlayImpl(RenderManager.CameraInfo cameraInfo) {
-            TerrainPatch clampedPatch = TerrainManager.instance.m_patches[40];
-            GridCenter = clampedPatch.m_bounds.center;
-        }
-        */
-
-        protected override void EndOverlayImpl(RenderManager.CameraInfo cameraInfo) {
-            if (GlobalConfig.Instance.EnableVehicleManagerGrid) {
-                RenderGrid(cameraInfo, new Vector3(0f, 0f, 0f), 8000f, 100f);
-            }
         }
 
         private void RenderGrid(RenderManager.CameraInfo cameraInfo, Vector3 center, float size, float height) {
@@ -54,7 +36,7 @@ namespace GridDrawer {
                     quad.c = center + xVec * (size / 2) + zVec * (i * GRID_CELL_SIZE - (size / 2));
                     quad.d = center + xVec * (size / 2) + zVec * (i * GRID_CELL_SIZE - (size / 2));
                     Color color = (i % 5 == 0 ? Color.red : Color.white);
-                    // color.a = 0.2f;
+                    color.a = GRID_COLOR_ALPHA;
                     RenderManager.instance.OverlayEffect.DrawQuad(cameraInfo, color, quad, -1f, 1025f, false, true);
                 }
 
@@ -65,7 +47,7 @@ namespace GridDrawer {
                     quad.c = center + zVec * (size / 2) + xVec * (i * GRID_CELL_SIZE - (size / 2));
                     quad.d = center + zVec * (size / 2) + xVec * (i * GRID_CELL_SIZE - (size / 2));
                     Color color = (i % 5 == 0 ? Color.red : Color.white);
-                    // color.a = 0.2f;
+                    color.a = GRID_COLOR_ALPHA;
                     RenderManager.instance.OverlayEffect.DrawQuad(cameraInfo, color, quad, -1f, 1025f, false, true);
                 }
             }
